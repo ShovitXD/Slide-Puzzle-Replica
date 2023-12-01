@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tile Red
+  - Tile Blue
+  - Tile Yellow
+  - Tile Green
+  - Shreader Red
+  - Shreader Blue
+  - Shreader Yellow
+  - Shreader Green
+  - Swipable
   layers:
   - Default
   - TransparentFX
