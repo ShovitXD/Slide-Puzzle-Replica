@@ -33,9 +33,10 @@ public class RedShreader : MonoBehaviour
             Destroy(collision.gameObject);
             gameManager.Points++;
         }
-        if (collision.gameObject.CompareTag("Tile Green") && gameManager.Points >= 3)
+        if (collision.gameObject.CompareTag("Tile Green") && gameManager.SwapAlloed == true)
         {
             StartCoroutine(ResetRotAfterDelay());
+            gameManager.SwapLeft--;
         }
     }
     IEnumerator ResetRotAfterDelay()

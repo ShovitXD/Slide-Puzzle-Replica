@@ -32,9 +32,10 @@ public class YellowShreader : MonoBehaviour
             Destroy(collision.gameObject);
             gameManager.Points++;
         }
-        if (collision.gameObject.CompareTag("Tile Blue") && gameManager.Points >= 3)
+        if (collision.gameObject.CompareTag("Tile Blue") && gameManager.SwapAlloed == true)
         {
             StartCoroutine(ResetRotAfterDelay());
+            gameManager.SwapLeft--;
         }
     }
     IEnumerator ResetRotAfterDelay()
