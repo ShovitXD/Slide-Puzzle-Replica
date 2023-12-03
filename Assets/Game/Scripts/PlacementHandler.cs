@@ -7,12 +7,16 @@ public class PlacementHandler : MonoBehaviour
 {
     [Header("Tile Positions")]
     public Transform[] TilePos;
-    [Header("Shreaders Locations")]
+
+    [Header("RedShreader Locations")]
     public Transform[] ShreaderPos;
+
     [Header("Swipable Prefabs")]
     public GameObject[] SwipablesPrefab;
-    [Header("Shreader Prefabs")]
+
+    [Header("RedShreader Prefabs")]
     public GameObject[] ShreaderPrefab;
+
     [Header("Parent Objects")]
     public GameObject Tiles;
     public GameObject Shreaders;
@@ -26,20 +30,26 @@ public class PlacementHandler : MonoBehaviour
         Tiles.transform.localPosition = Vector3.zero;
         Shreaders.transform.localPosition = Vector3.zero;
 
-        // Shuffle TilePos array
+        //Random Swapable Position
         ShuffleArray(TilePos);
-
-        // Set Swipable initial positions
         for (int i = 0; i < SwipablesPrefab.Length; i++)
         {
-            // Randomize initial position
             Vector3 swipablePosition = new Vector3(TilePos[i].position.x, TilePos[i].position.y + 0.5f, TilePos[i].position.z);
-
-            // Instantiate Swipables at randomized position
             GameObject swipableObject = Instantiate(SwipablesPrefab[i], swipablePosition, Quaternion.identity);
             swipableObject.transform.parent = Tiles.transform;
         }
+
+        //RedShreader Positions
+
+        for (int i = 0;i < ShreaderPos.Length; i++)
+        {
+            Vector3 Bluepos = new Vector3(ShreaderPos[i].position.x, ShreaderPos[i].position.y, ShreaderPos[i].position.z);           
+            GameObject BlueShread = Instantiate(ShreaderPrefab[i], Bluepos, Quaternion.identity);
+            BlueShread.transform.parent = Shreaders.transform;  
+        }
     }
+
+    
 
     // Fisher-Yates shuffle algorithm
     private void ShuffleArray<T>(T[] array)
